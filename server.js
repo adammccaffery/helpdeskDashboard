@@ -15,19 +15,30 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
+const GetTicketStats = (callback) => {
+  var cards = [
+    { name: "Action Required", value: "51", category: "Helpdesk" },
+    { name: "Unassigned", value: "5", category: "Helpdesk" },
+    { name: "Open Today", value: "26", category: "Helpdesk" },
+    { name: "Resolved Today", value: "12", category: "Helpdesk" },
+    { name: "Incidents", value: "30", category: "Database" },
+    { name: "Service Requests", value: "12", category: "Database" },
+    { name: "Open Today", value: "1", category: "Database" },
+    { name: "Resolved Today", value: "1", category: "Database" },
+    { name: "Action Required", value: "13", category: "IT Operations" },
+    { name: "Unassigned", value: "1", category: "IT Operations" },
+    { name: "Open Today", value: "0", category: "IT Operations" },
+    { name: "Resolved Today", value: "0", category: "IT Operations" },
+  ];
+
+  callback(cards);
+};
+
+app.get("/ticketStats", (req, res) => {
+  GetTicketStats((data) => {
+    res.send(data);
+  });
+});
+
 app.listen(process.env.PORT || 8080);
-
-// app.get("/data", (req, res) => {
-//   GetData((data) => {
-//     console.log(data);
-//     res.send(data);
-//   });
-// });
-
-// const GetData = (callback) => {
-//   client.query("select * from playerdata", (err, res) => {
-//     if (err) console.log(err);
-//     if (res) callback(res.rows);
-//     else console.log("Failed to connect to server");
-//   });
-// };
+console.log("Server Listening...");
