@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import errorImg from "./components/errorIcon.png";
 import "./App.css";
 
 // Components
@@ -8,6 +8,7 @@ import CardCategory from "./components/cardCategory";
 
 function App() {
   const [ticketData, setTicketData] = useState([]);
+  const [serverErrorStatus, setServerErrorStatus] = useState(false);
 
   useEffect(() => {
     UpdateTicketData();
@@ -21,6 +22,8 @@ function App() {
     fetch("/ticketStats")
       .then((response) => {
         console.log(response);
+        setServerErrorStatus(response === null || response.status !== 200);
+
         return response.json();
       })
       .then((jsonResponse) => {
@@ -82,6 +85,12 @@ function App() {
         </div>
       )}
       {ticketData !== null && <div>{RenderCategorisedTickets()}</div>}
+      <div
+        className="serverErrorIcon"
+        style={serverErrorStatus ? { opacity: 1 } : { opacity: 0 }}
+      >
+        <img src={errorImg} />
+      </div>
     </div>
   );
 }
