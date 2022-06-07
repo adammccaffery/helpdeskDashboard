@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 
-function Clock() {
+function DigitalClock() {
   const [clockState, setClockState] = useState();
 
   useEffect(() => {
@@ -11,11 +10,12 @@ function Clock() {
     }, 1000);
   }, []);
 
-  return (<div className="digitalClock">
-            <p>{new Date().toLocaleString('default', {weekday: 'long'})}</p>
-            <p>{clockState}</p>
-        </div>
+  return (
+    <div className="digitalClock">
+      <p>{new Date().toLocaleString("default", { weekday: "long" })}</p>
+      <p>{clockState}</p>
+    </div>
   );
 }
 
-export default Clock;
+export default DigitalClock;

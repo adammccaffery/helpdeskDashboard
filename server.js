@@ -23,17 +23,16 @@ const GetTicketStats = (callback) => {
 
   for (var i = 0; i < data.length; i++) {
     if (data[i].agent != null) {
-      cards.push( {
-        "name": data[i].agent,
-        "value": data[i].openTickets,
-        "category": "Agents"
+      cards.push({
+        name: data[i].agent,
+        value: data[i].openTickets,
+        category: "Agents",
       });
-    }
-    else {
-      cards.push( {
-        "name": StripCategoryFromName(data[i].name),
-        "value": data[i].value,
-        "category": GetCategoryFromName(data[i].name)
+    } else {
+      cards.push({
+        name: StripCategoryFromName(data[i].name),
+        value: data[i].value,
+        category: GetCategoryFromName(data[i].name),
       });
     }
   }
@@ -51,7 +50,7 @@ const StripCategoryFromName = (name) => {
   }
 
   return name;
-}
+};
 
 const GetCategoryFromName = (name) => {
   const categories = ["Helpdesk", "Database", "IT Ops"];
@@ -63,12 +62,18 @@ const GetCategoryFromName = (name) => {
   }
 
   return "Unassigned";
-}
+};
 
 app.get("/ticketStats", (req, res) => {
   GetTicketStats((data) => {
     res.send(data);
   });
+});
+
+app.get("/settings", (req, res) => {
+  var settingsObj = JSON.parse(fs.readFileSync("./settings.json"));
+
+  res.send(settingsObj);
 });
 
 app.listen(process.env.PORT || 8080);

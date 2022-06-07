@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Theme",
+    "type": "Choice",
+    "options": "light, dark",
+    "value": "light"
+  },
+  {
+    "name": "Clock",
+    "type": "Choice",
+    "options": "digital, analog",
+    "value": "digital"
+  }
+]
