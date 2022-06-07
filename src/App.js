@@ -5,6 +5,7 @@ import "./App.css";
 // Components
 import TitleHeader from "./components/titleHeader";
 import CardCategory from "./components/cardCategory";
+import Clock from "./components/clock";
 
 function App() {
   const [ticketData, setTicketData] = useState([]);
@@ -18,16 +19,13 @@ function App() {
   }, []);
 
   const UpdateTicketData = () => {
-    console.log("Updating Ticket Data");
     fetch("/ticketStats")
       .then((response) => {
-        console.log(response);
         setServerErrorStatus(response === null || response.status !== 200);
 
         return response.json();
       })
       .then((jsonResponse) => {
-        console.log(jsonResponse);
         setTicketData(jsonResponse);
       });
   };
@@ -55,42 +53,42 @@ function App() {
     return categorisedTickets;
   };
 
-  const RenderCategorisedTickets = () => {
-    var cardCategories = [];
-
+  const GetTicketsForCategory = (category) => {
     var map = GetCategorisedTickets();
 
-    const mapIterator = map.values();
-
-    for (var i = 0; i < map.size; i++) {
-      var category = mapIterator.next();
-
-      cardCategories.push(
-        <CardCategory
-          title={category.value[0].category}
-          cards={category.value}
-          totalCategoryNum={map.size}
-        />
-      );
+    if (map.size === 0) {
+      return <div>Error</div>
     }
 
-    return cardCategories;
-  };
+    return <CardCategory title={category} cards={map.get(category)} />;
+  }
 
   return (
     <div className="App">
-      {ticketData === null && (
-        <div className="loadingScreen">
-          <h1>Loading...</h1>
+      {ticketData !== null && (
+        <div className="gridContainer">
+        <div className="gridCell">
+          {/* This is for the IT Ops tickets */}
+          {GetTicketsForCategory("IT Ops")}
         </div>
-      )}
-      {ticketData !== null && <div>{RenderCategorisedTickets()}</div>}
-      <div
-        className="serverErrorIcon"
-        style={serverErrorStatus ? { opacity: 1 } : { opacity: 0 }}
-      >
-        <img src={errorImg} />
+        <div className="gridCell">
+          {/* This is for the digital date/clock */}
+          <Clock />
+        </div>
+        <div className="gridCell" style={{gridColumn: "span 2"}}>
+          {/* This is for the more important ticket data, Helpdesk and Database */}
+          {GetTicketsForCategory("Helpdesk")}
+          {GetTicketsForCategory("Database")}
+        </div>
+        <div
+          className="serverErrorIcon"
+          style={serverErrorStatus ? { opacity: 1 } : { opacity: 0 }}
+        >
+          <img src={errorImg} />
+        </div>
       </div>
+      )}
+      
     </div>
   );
 }

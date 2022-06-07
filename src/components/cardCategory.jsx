@@ -3,10 +3,10 @@ import React from "react";
 import Card from "./card";
 
 function CardCategory(props) {
+
   return (
     <div
       className="cardCategoryContainer"
-      style={{ height: `${(1 / props.totalCategoryNum) * 100}vh` }}
     >
       <h1>{props.title}</h1>
       <div className="cardContainer">
