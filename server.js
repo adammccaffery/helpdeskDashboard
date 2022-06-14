@@ -76,5 +76,7 @@ app.get("/settings", (req, res) => {
   res.send(settingsObj);
 });
 
-app.listen(process.env.PORT || 8080);
-console.log("Server Listening...");
+const port = process.env.PORT || 8080;
+
+app.listen(port);
+console.log(`Server Listening at port ${port}...`);
