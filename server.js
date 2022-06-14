@@ -5,6 +5,18 @@ const path = require("path");
 const app = express();
 const enforce = require("express-sslify");
 const fs = require("fs");
+const dotenv = require("dotenv")
+const mssql = require("mssql")
+require("msnodesqlv8")
+const sql = require("mssql/msnodesqlv8");
+const pool = new sql.ConnectionPool({
+  database: "FreshService",
+  server: "asc-sql03",
+  driver: "msnodesqlv8",
+  options: {
+    trustedConnection: true
+  }
+});
 
 if (process.env.PORT) app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
@@ -16,8 +28,15 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-const GetTicketStats = (callback) => {
-  var data = JSON.parse(fs.readFileSync("./dummyData/data.json"));
+const GetTicketStats = async (callback) => {
+        await pool.connect();
+        const result = await pool.request().query(`DECLARE @r VARCHAR(1000)
+        EXEC REPORTS.spExportStatsJSON  @r OUTPUT
+        select @r`)
+        var data = await JSON.parse(result.recordset[0][""]);
+        //console.log(result.recordset)
+        //console.log(data)
+
 
   var cards = [];
 
