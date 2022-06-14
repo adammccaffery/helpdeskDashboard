@@ -93,7 +93,7 @@ function App() {
         <div className="gridContainer">
           <div className="gridCell">
             {/* This is for the IT Ops tickets */}
-            {GetTicketsForCategory("IT Ops")}
+            {GetTicketsForCategory("Helpdesk")}
           </div>
           <div className="gridCell">
             {/* This is for the digital date/DigitalClock*/}
@@ -104,16 +104,16 @@ function App() {
                 <iframe
                   src="https://free.timeanddate.com/clock/i8d0v3o0/n240/szw400/szh400/cf100/hnce1ead6"
                   frameborder="0"
-                  width="400px"
-                  height="400px"
+                  width="200px"
+                  height="200px"
                 ></iframe>
               </div>
             )}
           </div>
           <div className="gridCell" style={{ gridColumn: "span 2" }}>
             {/* This is for the more important ticket data, Helpdesk and Database */}
-            {GetTicketsForCategory("Helpdesk")}
             {GetTicketsForCategory("Database")}
+            {GetTicketsForCategory("IT Ops")}
           </div>
           <div
             className="serverErrorIcon"

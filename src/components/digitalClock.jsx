@@ -6,7 +6,7 @@ function DigitalClock() {
   useEffect(() => {
     setInterval(() => {
       const date = new Date();
-      setClockState(date.toLocaleTimeString());
+      setClockState(date.toLocaleTimeString("default", { hour : "numeric", minute: "2-digit"}));
     }, 1000);
   }, []);
 
