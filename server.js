@@ -7,19 +7,16 @@ const enforce = require("express-sslify");
 const fs = require("fs");
 const dotenv = require("dotenv")
 const mssql = require("mssql")
-const config = {
-    driver: process.env.SQL_DRIVER,
-    server: process.env.SQL_SERVER,
-    database: process.env.SQL_DATABASE,
-    //user: process.env.SQL_UID,
-    //password: process.env.SQL_PWD,
-    options: {
-        encrypt: false,
-        enableArithAbort: false,
-        trustedConnection: true
-    },
-};
-const pool = new mssql.ConnectionPool(config);
+require("msnodesqlv8")
+const sql = require("mssql/msnodesqlv8");
+const pool = new sql.ConnectionPool({
+  database: "FreshService",
+  server: "asc-sql03",
+  driver: "msnodesqlv8",
+  options: {
+    trustedConnection: true
+  }
+});
 
 if (process.env.PORT) app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
@@ -32,15 +29,14 @@ app.get("/", (req, res) => {
 });
 
 const GetTicketStats = async (callback) => {
-    try {
         await pool.connect();
-        const result = await pool.request().query(`exec REPORTS.spExportStatsJSON`)
-  var data = await JSON.parse(result);
-        console.log(result)
-    }
-        catch {
-            console.log("error")
-        }
+        const result = await pool.request().query(`DECLARE @r VARCHAR(1000)
+        EXEC REPORTS.spExportStatsJSON  @r OUTPUT
+        select @r`)
+        var data = await JSON.parse(result.recordset[0][""]);
+        //console.log(result.recordset)
+        //console.log(data)
+
 
   var cards = [];
 
