@@ -1,14 +1,88 @@
 import React from "react";
 
 function Card(props) {
-  const GetDynamicClass = () => {
+    const GetDynamicClass = () => {
     var classList = "";
+    var warningL = 30
 
-    if (parseInt(props.value) > 30) {
-      classList = "warningImportant";
-    } else if (parseInt(props.value) > 15) {
-      classList = "warningCaution";
+
+    switch(props.category){
+        case 'Helpdesk':
+            warningL = 40
+            break
+        case "Database":
+            warningL = 40
+            break
+        case "IT Ops":
+            warningL = 10
+            break
+        default:
+            warningL = 40
+            break
     }
+
+        var tix = props.value
+            switch (props.name){
+                case "Action Required":
+                    switch (true){
+                        case (tix >= warningL):
+                            classList = "warningImportant";
+                            break;
+                        case (tix >= warningL/1.5):
+                            classList = "warningCaution";
+                            break;
+                        default:
+                            break;
+                    }
+                    break
+                case "Unassigned":
+                    switch (true){
+                        case (tix >= warningL/4):
+                            classList = "warningImportant";
+                            break;
+                        case (tix >= warningL/8):
+                            classList = "warningCaution";
+                            break;
+                        default:
+                            break;
+                    }
+                    break
+                case "Incident Action Required":
+                    switch (true){
+                        case (tix >= warningL/4):
+                            classList = "warningImportant";
+                            break;
+                        case (tix >= warningL/8):
+                            classList = "warningCaution";
+                            break;
+                        default:
+                            break;
+                    }
+                    break
+                case "Service Request":
+                    switch (props.value){
+                        case (tix >= warningL/4):
+                            classList = "warningImportant";
+                            break;
+                        case (tix >= warningL/8):
+                            classList = "warningCaution";
+                            break;
+                        default:
+                            break;
+                    }
+                    break
+                case "Resolved Today":
+                    switch (props.value){
+                        case (tix >= 10):
+                            classList = "warningImportant";
+                            break;
+                        case (tix >= 5):
+                            classList = "warningCaution";
+                            break;
+                        default:
+                            break;
+                    }
+            }
 
     return classList;
   };

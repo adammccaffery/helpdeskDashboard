@@ -7,9 +7,9 @@ const enforce = require("express-sslify");
 const fs = require("fs");
 const dotenv = require("dotenv")
 const mssql = require("mssql")
-require("msnodesqlv8")
-const sql = require("mssql/msnodesqlv8");
-const pool = new sql.ConnectionPool({
+//require("msnodesqlv8")
+//const sql = require("mssql/msnodesqlv8");
+/*const pool = new sql.ConnectionPool({
   database: "FreshService",
   server: "asc-sql03",
   driver: "msnodesqlv8",
@@ -17,6 +17,7 @@ const pool = new sql.ConnectionPool({
     trustedConnection: true
   }
 });
+*/
 
 if (process.env.PORT) app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
@@ -29,11 +30,15 @@ app.get("/", (req, res) => {
 });
 
 const GetTicketStats = async (callback) => {
+    try {
         await pool.connect();
         const result = await pool.request().query(`DECLARE @r VARCHAR(1000)
         EXEC REPORTS.spExportStatsJSON  @r OUTPUT
         select @r`)
         var data = await JSON.parse(result.recordset[0][""]);
+    } catch {
+        var data = JSON.parse(fs.readFileSync("./dummyData/data.json"));
+    }
         //console.log(result.recordset)
         //console.log(data)
 
@@ -64,7 +69,7 @@ const StripCategoryFromName = (name) => {
 
   for (var i = 0; i < categories.length; i++) {
     if (name.includes(categories[i])) {
-      return name.replace(categories[i], "");
+      return name.replace(categories[i], "").trim();
     }
   }
 
