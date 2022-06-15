@@ -8,7 +8,7 @@ function Card(props) {
 
     switch(props.category){
         case 'Helpdesk':
-            warningL = 40
+            warningL = 50
             break
         case "Database":
             warningL = 40
@@ -28,8 +28,11 @@ function Card(props) {
                         case (tix >= warningL):
                             classList = "warningImportant";
                             break;
-                        case (tix >= warningL/1.5):
+                        case (tix >= warningL/1.3):
                             classList = "warningCaution";
+                            break;
+                        case (tix >= warningL/1.5):
+                            classList = "warningSome";
                             break;
                         default:
                             classList = "warningNone"
@@ -41,8 +44,11 @@ function Card(props) {
                         case (tix >= warningL/4):
                             classList = "warningImportant";
                             break;
-                        case (tix >= 0):
+                        case (tix > warningL/5):
                             classList = "warningCaution";
+                            break;
+                        case (tix > 0):
+                            classList = "warningSome";
                             break;
                         default:
                             classList = "warningNone"
@@ -51,11 +57,14 @@ function Card(props) {
                     break
                 case "Incident":
                     switch (true){
-                        case (tix >= warningL/4):
+                        case (tix >= warningL):
                             classList = "warningImportant";
                             break;
-                        case (tix >= warningL/8):
+                        case (tix >= warningL/1.3):
                             classList = "warningCaution";
+                            break;
+                        case (tix >= warningL/1.5):
+                            classList = "warningSome";
                             break;
                         default:
                             classList = "warningNone"
@@ -64,30 +73,37 @@ function Card(props) {
                     break
                 case "Service Request":
                     switch (true){
-                        case (tix >= warningL/4):
+                        case (tix >= warningL/3):
                             classList = "warningImportant";
                             break;
-                        case (tix >= warningL/8):
+                        case (tix >= warningL/5):
                             classList = "warningCaution";
+                            break;
+                        case (tix >= warningL/6):
+                            classList = "warningSome";
                             break;
                         default:
                             classList = "warningNone"
                             break;
                     }
                     break
-                    /*
                 case "Resolved Today":
                     switch (true){
-                        case (tix >= 10):
+                        case (props.openedTickets == 0):
+                            break;
+                        case (props.openedTickets - tix >= 5):
                             classList = "warningImportant";
                             break;
-                        case (tix >= 5):
+                        case (props.openedTickets - tix > 3):
                             classList = "warningCaution";
                             break;
+                        case (props.openedTickets - tix > 0):
+                            classList = "warningSome";
+                            break;
                         default:
+                            classList = "warningNone";
                             break;
                     }
-                    */
             }
 
 

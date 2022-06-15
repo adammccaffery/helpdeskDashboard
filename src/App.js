@@ -93,8 +93,8 @@ function App() {
         <div className="gridContainer">
           <div className="gridCell" style={{ gridColumn: "span 2" }}>
             {/* This is for the IT Ops tickets */}
-            {GetTicketsForCategory("Helpdesk")}
             {/* This is for the more important ticket data, Helpdesk and Database */}
+            {GetTicketsForCategory("Helpdesk")}
             {GetTicketsForCategory("Database")}
             {GetTicketsForCategory("IT Ops")}
           </div>

@@ -3,6 +3,10 @@ import React from "react";
 import Card from "./card";
 
 function CardCategory(props) {
+    var openedTickets
+    console.log(typeof(props.cards))
+    console.log(props.cards[2].value)
+    openedTickets = props.cards[2].value
 
   return (
     <div
@@ -18,6 +22,7 @@ function CardCategory(props) {
                 name={c.name}
                 value={c.value}
                 category={c.category}
+                openedTickets={openedTickets}
                 customClasses={c.customClasses}
               />
             );
