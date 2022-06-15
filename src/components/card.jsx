@@ -47,7 +47,7 @@ function Card(props) {
                             break;
                     }
                     break
-                case "Incident Action Required":
+                case "Incident":
                     switch (true){
                         case (tix >= warningL/4):
                             classList = "warningImportant";
