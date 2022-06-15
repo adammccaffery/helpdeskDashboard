@@ -21,11 +21,11 @@
   },
   {
     "name": "Database Service Request",
-    "value": 0
+    "value": 12
   },
   {
     "name": "Database Opened Today",
-    "value": 0
+    "value": 1
   },
   {
     "name": "Database Resolved Today",

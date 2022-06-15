@@ -14,7 +14,7 @@ function Card(props) {
             warningL = 40
             break
         case "IT Ops":
-            warningL = 10
+            warningL = 12
             break
         default:
             warningL = 40
@@ -60,7 +60,7 @@ function Card(props) {
                     }
                     break
                 case "Service Request":
-                    switch (props.value){
+                    switch (true){
                         case (tix >= warningL/4):
                             classList = "warningImportant";
                             break;
@@ -72,7 +72,7 @@ function Card(props) {
                     }
                     break
                 case "Resolved Today":
-                    switch (props.value){
+                    switch (true){
                         case (tix >= 10):
                             classList = "warningImportant";
                             break;

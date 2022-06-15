@@ -17,6 +17,7 @@ function CardCategory(props) {
                 key={i}
                 name={c.name}
                 value={c.value}
+                category={c.category}
                 customClasses={c.customClasses}
               />
             );
