@@ -34,9 +34,11 @@ body {
 .gridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /*
   grid-template-rows: 1fr 1fr;
 
   height: 100%;
+  */
   width: 100%;
 }
 
@@ -45,16 +47,20 @@ body {
 }
 
 .titleHeader {
-  background-color: #1e1e1e;
-  color: #182a54;
+  /*background-color: #1e1e1e;*/
+  color: #ffffff;
   margin: 0;
 
+  /*
   padding: 1em 0;
   padding-left: 1em;
+  */
 }
 
 .titleHeader h1 {
+    font-size: 6rem;
   margin: 0;
+  text-align: center;
 }
 
 .card {
@@ -174,9 +180,11 @@ body {
 }
 
 .serverErrorIcon {
+    /*
   position: absolute;
   bottom: 0;
   right: 0;
+  */
 
   padding: 1em;
 

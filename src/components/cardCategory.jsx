@@ -3,10 +3,7 @@ import React from "react";
 import Card from "./card";
 
 function CardCategory(props) {
-    var openedTickets
-    console.log(typeof(props.cards))
-    console.log(props.cards[2].value)
-    openedTickets = props.cards[2].value
+    var openedTickets = props.cards[2].value
 
   return (
     <div

@@ -89,6 +89,7 @@ function App() {
 
   return (
     <div className="App">
+      <TitleHeader />
       {ticketData !== null && (
         <div className="gridContainer">
           <div className="gridCell" style={{ gridColumn: "span 2" }}>
@@ -98,9 +99,7 @@ function App() {
             {GetTicketsForCategory("Database")}
             {GetTicketsForCategory("IT Ops")}
           </div>
-          <div className="gridCell">
-              </div>
-          <div> {/*className="gridCell" >*/}
+          <div>
             {/* This is for the digital date/DigitalClock*/}
             {GetSettingValue("Clock") === "digital" ? (
               <DigitalClock />
@@ -115,13 +114,7 @@ function App() {
           </div>
             )}
           </div>
-          <div
-            className="serverErrorIcon"
-            style={serverErrorStatus ? { opacity: 1 } : { opacity: 0 }}
-          >
-            <img src={errorImg} />
           </div>
-        </div>
       )}
     </div>
   );

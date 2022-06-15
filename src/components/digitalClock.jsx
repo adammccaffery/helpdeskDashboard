@@ -11,8 +11,8 @@ function DigitalClock() {
   }, []);
 
   return (
-    <div className="digitalClock" style={{position:'relative'}}>
-      <p style={{position: 'absolute', bottom: 2, right: 5}}>{new Date().toLocaleString("default", { weekday: "long" })} {clockState}</p>
+    <div className="digitalClock" style={{}}>
+      <p style={{position: 'absolute', bottom: 2, right: 5}}>{new Date().toLocaleString("default", { day: "numeric", month: "long", weekday: "long" })} {clockState}</p>
     </div>
   );
 }
