@@ -111,6 +111,7 @@ body {
 }
 
 .card p {
+    color: #182a54;
   font-size: 7em;
   font-weight: bolder !important;
 }
@@ -132,16 +133,16 @@ body {
   margin-bottom: 0.25em;
 }
 
-.warningImportant {
-  color: #e42526; /* fallback for old browsers */
+.warningImportant p {
+  color: #e42526 !important; /* fallback for old browsers */
 }
 
-.warningCaution {
-  color: #fadf11;
+.warningCaution p {
+  color: #fadf11 !important;
 }
 
-.warningNone {
-  color: #009265;
+.warningNone p {
+  color: #009265 !important;
 }
 
 .categoryContainer {
@@ -187,5 +188,7 @@ body {
 }
 
 .digitalClock p {
+    color: #182a54;
+    font-weight: bold;
   font-size: 3em;
 }
