@@ -133,7 +133,8 @@ body {
   background: #ee0979; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
-    #ff6a00,
+    #ffffff
+    /*#ff6a00,*/
     #ee0979
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
@@ -184,11 +185,12 @@ body {
   height: 100%;
 
   display: flex;
+  /*justify-content: space-around;*/
   justify-content: space-around;
-  align-items: center;
+  align-items: right;
   flex-direction: column;
 }
 
 .digitalClock p {
-  font-size: 8em;
+  font-size: 3em;
 }
