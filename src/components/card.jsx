@@ -71,6 +71,7 @@ function Card(props) {
                             break;
                     }
                     break
+                    /*
                 case "Resolved Today":
                     switch (true){
                         case (tix >= 10):
@@ -82,7 +83,9 @@ function Card(props) {
                         default:
                             break;
                     }
+                    */
             }
+
 
     return classList;
   };
