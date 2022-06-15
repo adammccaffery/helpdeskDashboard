@@ -4,8 +4,8 @@
   margin: 0;
   box-sizing: border-box;
   padding: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Palatino"; /*"Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;*/
 }
 
 html,
@@ -17,17 +17,20 @@ body {
 .App {
   width: 100vw;
   height: 100vh;
-  background: #bdc3c7; /* fallback for old browsers */
+  background: #f5f5f5; /* fallback for old browsers */
+  /*
   background: -webkit-linear-gradient(
     to right,
     #546e88,
     #bdc3c7
   ); /* Chrome 10-25, Safari 5.1-6 */
+  /*
   background: linear-gradient(
     to right,
     #546e88,
     #bdc3c7
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 
 .gridContainer {
@@ -45,7 +48,7 @@ body {
 
 .titleHeader {
   background-color: #1e1e1e;
-  color: white;
+  color: #182a54;
   margin: 0;
 
   padding: 1em 0;
@@ -62,7 +65,7 @@ body {
 
   margin-bottom: 1em;
 
-  background: #7fd57f;
+  background: #d7c49f;/*#7fd57f;*/
 
   display: flex;
   align-items: center;
@@ -84,7 +87,7 @@ body {
 
 .card h2 {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #7e7062;/*rgba(0, 0, 0, 0.1);*/
   text-align: center;
   color: white;
   display: flex;
@@ -124,28 +127,21 @@ body {
 }
 
 .cardCategoryContainer h1 {
-  color: white;
+  color: #182a54;
   font-size: 3em;
   margin-bottom: 0.25em;
 }
 
 .warningImportant {
-  background: #ee0979; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #ffffff
-    /*#ff6a00,*/
-    #ee0979
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #ff6a00,
-    #ee0979
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #e42526; /* fallback for old browsers */
 }
 
 .warningCaution {
-  background: #e4df41;
+  color: #fadf11;
+}
+
+.warningNone {
+  color: #009265;
 }
 
 .categoryContainer {
@@ -185,7 +181,6 @@ body {
   height: 100%;
 
   display: flex;
-  /*justify-content: space-around;*/
   justify-content: space-around;
   align-items: right;
   flex-direction: column;

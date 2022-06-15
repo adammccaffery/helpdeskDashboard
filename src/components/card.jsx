@@ -32,6 +32,7 @@ function Card(props) {
                             classList = "warningCaution";
                             break;
                         default:
+                            classList = "warningNone"
                             break;
                     }
                     break
@@ -44,6 +45,7 @@ function Card(props) {
                             classList = "warningCaution";
                             break;
                         default:
+                            classList = "warningNone"
                             break;
                     }
                     break
@@ -56,6 +58,7 @@ function Card(props) {
                             classList = "warningCaution";
                             break;
                         default:
+                            classList = "warningNone"
                             break;
                     }
                     break
@@ -68,6 +71,7 @@ function Card(props) {
                             classList = "warningCaution";
                             break;
                         default:
+                            classList = "warningNone"
                             break;
                     }
                     break
