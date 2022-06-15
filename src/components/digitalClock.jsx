@@ -6,13 +6,13 @@ function DigitalClock() {
   useEffect(() => {
     setInterval(() => {
       const date = new Date();
-      setClockState(date.toLocaleTimeString("default", { hour : "numeric", minute: "2-digit"}));
+      setClockState(date.toLocaleTimeString("en-AU", { hour : "numeric", minute: "2-digit"}));
     }, 1000);
   }, []);
 
   return (
     <div className="digitalClock" style={{position:'relative'}}>
-      <p style={{position: 'absolute', bottom: 2, right: 2}}>{new Date().toLocaleString("default", { weekday: "long" })} {clockState}</p>
+      <p style={{position: 'absolute', bottom: 2, right: 5}}>{new Date().toLocaleString("default", { weekday: "long" })} {clockState}</p>
     </div>
   );
 }

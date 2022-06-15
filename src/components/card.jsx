@@ -40,7 +40,7 @@ function Card(props) {
                         case (tix >= warningL/4):
                             classList = "warningImportant";
                             break;
-                        case (tix >= warningL/8):
+                        case (tix >= 0):
                             classList = "warningCaution";
                             break;
                         default:
