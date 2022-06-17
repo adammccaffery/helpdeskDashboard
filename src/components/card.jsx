@@ -63,7 +63,7 @@ function Card(props) {
                         case (tix >= warningL/1.3):
                             classList = "warningCaution";
                             break;
-                        case (tix >= warningL/1.5):
+                        case (tix >= warningL/1.6):
                             classList = "warningSome";
                             break;
                         default:
@@ -79,7 +79,7 @@ function Card(props) {
                         case (tix >= warningL/5):
                             classList = "warningCaution";
                             break;
-                        case (tix >= warningL/6):
+                        case (tix >= warningL/8):
                             classList = "warningSome";
                             break;
                         default:
