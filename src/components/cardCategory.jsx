@@ -4,7 +4,7 @@ import Card from "./card";
 import LeaderboardCard from "./leaderboardCard";
 
 function CardCategory(props) {
-    if (props.cards[0].category != "Agents"){
+    if (props.cards[0].category !== "Agents"){
         var openedTickets = props.cards[2].value
           return (
             <div

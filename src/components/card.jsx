@@ -2,7 +2,7 @@ import React from "react";
 
 function Card(props) {
     const GetDynamicClass = () => {
-        if (props.category == "Agents") {
+        if (props.category === "Agents") {
             return props.category
         }
     var classList = "";
@@ -92,7 +92,7 @@ function Card(props) {
                     break
                 case "Resolved Today":
                     switch (true){
-                        case (props.openedTickets == 0):
+                        case (props.openedTickets === 0):
                             break;
                         case (props.openedTickets - tix >= 5):
                             classList = "warningImportant";
