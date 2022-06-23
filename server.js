@@ -7,9 +7,9 @@ const enforce = require("express-sslify");
 const fs = require("fs");
 const dotenv = require("dotenv")
 const mssql = require("mssql")
-//require("msnodesqlv8")
-//const sql = require("mssql/msnodesqlv8");
-/*const pool = new sql.ConnectionPool({
+require("msnodesqlv8")
+const sql = require("mssql/msnodesqlv8");
+const pool = new sql.ConnectionPool({
   database: "FreshService",
   server: "asc-sql03",
   driver: "msnodesqlv8",
@@ -17,7 +17,7 @@ const mssql = require("mssql")
     trustedConnection: true
   }
 });
-*/
+
 
 if (process.env.PORT) app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
