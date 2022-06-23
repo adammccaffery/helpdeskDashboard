@@ -2,6 +2,9 @@ import React from "react";
 
 function Card(props) {
     const GetDynamicClass = () => {
+        if (props.category == "Agents") {
+            return props.category
+        }
     var classList = "";
     var warningL = 30
 

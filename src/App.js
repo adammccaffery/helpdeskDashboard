@@ -5,6 +5,7 @@ import "./App.css";
 // Components
 import TitleHeader from "./components/titleHeader";
 import CardCategory from "./components/cardCategory";
+import Card from "./components/card";
 import DigitalClock from "./components/digitalClock";
 import Clock from "react-clock";
 
@@ -69,6 +70,7 @@ function App() {
             name: obj.name,
             value: obj.value,
             category: obj.category,
+              top5: obj.top5,
           },
         ])
       );
@@ -88,36 +90,21 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <TitleHeader />
-      {ticketData !== null && (
-        <div className="gridContainer">
-          <div className="gridCell" style={{ gridColumn: "span 2" }}>
-            {/* This is for the IT Ops tickets */}
-            {/* This is for the more important ticket data, Helpdesk and Database */}
-            {GetTicketsForCategory("Helpdesk")}
-            {GetTicketsForCategory("Database")}
-            {GetTicketsForCategory("IT Ops")}
-          </div>
-          <div>
-            {/* This is for the digital date/DigitalClock*/}
-            {GetSettingValue("Clock") === "digital" ? (
-              <DigitalClock />
-            ) : (
-              <div className="digitalClock" >
-                <iframe
-                  src="https://free.timeanddate.com/clock/i8d0v3o0/n240/szw400/szh400/cf100/hnce1ead6"
-                  frameborder="0"
-                  width="200px"
-                  height="200px"
-                ></iframe>
-          </div>
-            )}
-          </div>
-          </div>
-      )}
-    </div>
-  );
+            <div className="App">
+                <TitleHeader />
+                {ticketData !== null && (
+                    <div className="gridContainer">
+                        <div className="gridCell" style={{ gridColumn: "span 2" }}>
+                            {GetTicketsForCategory("Helpdesk")}
+                            {GetTicketsForCategory("Database")}
+                            {GetTicketsForCategory("IT Ops")}
+                            {GetTicketsForCategory("Agents")}
+                        </div>
+                        <DigitalClock />
+                    </div>
+                )}
+            </div>
+          );
 }
 
 export default App;

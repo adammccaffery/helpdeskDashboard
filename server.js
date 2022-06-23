@@ -39,18 +39,16 @@ const GetTicketStats = async (callback) => {
     } catch {
         var data = JSON.parse(fs.readFileSync("./dummyData/data.json"));
     }
-        //console.log(result.recordset)
-        //console.log(data)
 
-
-  var cards = [];
+    var cards = [];
+    var agents = [];
 
   for (var i = 0; i < data.length; i++) {
     if (data[i].agent != null) {
-      cards.push({
+      agents.push({
         name: data[i].agent,
-        value: data[i].openTickets,
-        category: "Agents",
+        openedTickets: data[i].openTickets,
+        resolvedTickets: data[i].resolvedToday,
       });
     } else {
       cards.push({
@@ -60,9 +58,16 @@ const GetTicketStats = async (callback) => {
       });
     }
   }
+const top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedTickets != 0))).sort((a,b) => b.resolvedTickets - a.resolvedTickets).slice(0,5)
+    cards.push({
+        name: "Resolved Today",
+        top5: top5,
+        category: "Agents",
+    });
 
   callback(cards);
 };
+
 
 const StripCategoryFromName = (name) => {
   const categories = ["Helpdesk", "Database", "IT Ops"];
