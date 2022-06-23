@@ -1,63 +1,115 @@
 [
-  {
-    "name": "Helpdesk Action Required",
-    "value": 57
-  },
-  {
-    "name": "Helpdesk Unassigned",
-    "value": 5
-  },
-  {
-    "name": "Helpdesk Opened Today",
-    "value": 18
-  },
-  {
-    "name": "Helpdesk Resolved Today",
-    "value": 17
-  },
-  {
-    "name": "Database Incident",
-    "value": 34
-  },
-  {
-    "name": "Database Service Request",
-    "value": 12
-  },
-  {
-    "name": "Database Opened Today",
-    "value": 1
-  },
-  {
-    "name": "Database Resolved Today",
-    "value": 3
-  },
-  {
-    "name": "IT Ops Action Required",
-    "value": 13
-  },
-  {
-    "name": "IT Ops Unassigned",
-    "value": 1
-  },
-  {
-    "name": "IT Ops Opened Today",
-    "value": 0
-  },
-  {
-    "name": "IT Ops Resolved Today",
-    "value": 0
-  },
-  { "agent": "Gam Gurung", "openTickets": 52 },
-  { "agent": "Ray Patton", "openTickets": 36 },
-  { "agent": "Anthony Barron", "openTickets": 26 },
-  { "agent": "Adam McCaffery", "openTickets": 10 },
-  { "agent": "Unassigned", "openTickets": 7 },
-  { "agent": "Queenie Nguyen", "openTickets": 7 },
-  { "agent": "Lei Yang", "openTickets": 6 },
-  { "agent": "Phil Ryder", "openTickets": 5 },
-  { "agent": "Paddy Heaton", "openTickets": 5 },
-  { "agent": "Michael Rahman", "openTickets": 3 },
-  { "agent": "Patrik Kertesz", "openTickets": 3 },
-  { "agent": "Lily Wang", "openTickets": 2 },
-  { "agent": "Nicholas Schneider", "openTickets": 1 }
+	{
+		"name": "Helpdesk Action Required",
+		"value": 29
+	},
+	{
+		"name": "Helpdesk Unassigned",
+		"value": 0
+	},
+	{
+		"name": "Helpdesk Opened Today",
+		"value": 3
+	},
+	{
+		"name": "Helpdesk Resolved Today",
+		"value": 10
+	},
+	{
+		"name": "Database Incident",
+		"value": 41
+	},
+	{
+		"name": "Database Service Request",
+		"value": 12
+	},
+	{
+		"name": "Database Opened Today",
+		"value": 1
+	},
+	{
+		"name": "Database Resolved Today",
+		"value": 3
+	},
+	{
+		"name": "IT Ops Action Required",
+		"value": 10
+	},
+	{
+		"name": "IT Ops Unassigned",
+		"value": 0
+	},
+	{
+		"name": "IT Ops Opened Today",
+		"value": 0
+	},
+	{
+		"name": "IT Ops Resolved Today",
+		"value": 0
+	},
+	{
+		"agent": "Ray Patton",
+		"openTickets": 49,
+		"resolvedToday": 1
+	},
+	{
+		"agent": "Gam Gurung",
+		"openTickets": 44,
+		"resolvedToday": 5
+	},
+	{
+		"agent": "Anthony Barron",
+		"openTickets": 31,
+		"resolvedToday": 1
+	},
+	{
+		"agent": "Lei Yang",
+		"openTickets": 11,
+		"resolvedToday": 2
+	},
+	{
+		"agent": "Queenie Nguyen",
+		"openTickets": 10,
+		"resolvedToday": 1
+	},
+	{
+		"agent": "Michael Rahman",
+		"openTickets": 6,
+		"resolvedToday": 0
+	},
+	{
+		"agent": "Patrik Kertesz",
+		"openTickets": 5,
+		"resolvedToday": 1
+	},
+	{
+		"agent": "Paddy Heaton",
+		"openTickets": 4,
+		"resolvedToday": 1
+	},
+	{
+		"agent": "Lily Wang",
+		"openTickets": 3,
+		"resolvedToday": 1
+	},
+	{
+		"agent": "Phil Ryder",
+		"openTickets": 3,
+		"resolvedToday": 0
+	},
+	{
+		"agent": "Adam McCaffery",
+		"openTickets": 3,
+		"resolvedToday": 0
+	},
+	{
+		"agent": "Nicholas Schneider",
+		"openTickets": 1,
+		"resolvedToday": 0
+	},
+	{
+		"agent": "Christine Zhang",
+		"openTickets": 0,
+		"resolvedToday": 0
+	}
 ]

@@ -117,9 +117,17 @@ body {
 
 .card p {
     color: #f3eac0;
+}
+
+.valueContainer p {
   font-size: 7em;
   font-weight: bolder !important;
-}
+  }
+
+.leaderboardValueContainer p {
+  font-size: 2em;
+  /*font-weight: bolder !important;*/
+  }
 
 .cardContainer {
   display: flex;
@@ -137,6 +145,7 @@ body {
   font-size: 3em;
   margin-bottom: 0.25em;
 }
+
 
 .warningImportant  {
   background: #922c40 !important;
@@ -210,4 +219,19 @@ body {
     color: #f3eac0;
     font-weight: bold;
   font-size: 3em;
+}
+
+.leaderboardValueContainer {
+  color: #f3eac0;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2em;
+  font-weight: bolder;
+    width: 80%
+}
+
+
+.leaderboardValueContainer table {
+    width: 100%
 }
