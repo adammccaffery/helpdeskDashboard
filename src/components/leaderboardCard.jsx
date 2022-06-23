@@ -12,12 +12,22 @@ function LeaderboardCard(props) {
       <h2>{props.name}</h2>
       <div className="leaderboardValueContainer">
             <table>
-                {props.top5 !== null && props.top5.map(function (c,i) {
+                {props.name === "Resolved Today" && props.top5.map(function (c,i) {
                     return (
                         <>
                             <tr>
                                 <td>{c.name}</td>
                                 <td>{c.resolvedTickets}</td>
+                            </tr>
+                        </>
+                    );
+                })}
+                {props.name === "Open Tickets" && props.top5.map(function (c,i) {
+                    return (
+                        <>
+                            <tr>
+                                <td>{c.name}</td>
+                                <td>{c.openedTickets}</td>
                             </tr>
                         </>
                     );

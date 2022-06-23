@@ -58,9 +58,16 @@ const GetTicketStats = async (callback) => {
       });
     }
   }
-const top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedTickets != 0))).sort((a,b) => b.resolvedTickets - a.resolvedTickets).slice(0,5)
+var top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedTickets != 0))).sort((a,b) => b.resolvedTickets - a.resolvedTickets).slice(0,5)
     cards.push({
         name: "Resolved Today",
+        top5: top5,
+        category: "Agents",
+    });
+top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.opendedTickets != 0))).sort((a,b) => b.opendedTickets - a.opendedTickets).slice(0,5)
+
+    cards.push({
+        name: "Open Tickets",
         top5: top5,
         category: "Agents",
     });
