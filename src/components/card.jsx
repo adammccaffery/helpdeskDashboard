@@ -94,13 +94,13 @@ function Card(props) {
                     switch (true){
                         case (tix === 0):
                             break;
-                        case (props.openedTickets === 0):
+                        case (props.openedTickets - tix <= 0):
                             classList = "warningNone";
                             break;
                         case (props.openedTickets - tix >= 5):
                             classList = "warningImportant";
                             break;
-                        case (props.openedTickets - tix > 3):
+                        case (props.openedTickets - tix >= 3):
                             classList = "warningCaution";
                             break;
                         case (props.openedTickets - tix > 0):
