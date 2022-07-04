@@ -92,7 +92,10 @@ function Card(props) {
                     break
                 case "Resolved Today":
                     switch (true){
+                        case (tix === 0):
+                            break;
                         case (props.openedTickets === 0):
+                            classList = "warningNone";
                             break;
                         case (props.openedTickets - tix >= 5):
                             classList = "warningImportant";
@@ -104,9 +107,9 @@ function Card(props) {
                             classList = "warningSome";
                             break;
                         default:
-                            classList = "warningNone";
                             break;
                     }
+                    break
             }
 
 
