@@ -75,7 +75,29 @@ top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent
   callback(cards);
 };
 
+const GetAgentStats = async (callback) => {
+    try {
+        await pool.connect();
+        const result = await pool.request().query(`DECLARE @r VARCHAR(1000)
+        EXEC REPORTS.spExportStatsJSON  @r OUTPUT
+        select @r`)
+        var data = await JSON.parse(result.recordset[0][""]);
+    } catch {
+        var data = JSON.parse(fs.readFileSync("./dummyData/data.json"));
+    }
 
+    var agents = [];
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].agent != null) {
+          agents.push({
+            name: data[i].agent,
+            openedTickets: data[i].openTickets,
+            resolvedTickets: data[i].resolvedToday,
+          });
+        }
+    }
+    callback(agents);
+}
 const StripCategoryFromName = (name) => {
   const categories = ["Helpdesk", "Database", "IT Ops"];
 
@@ -106,6 +128,11 @@ app.get("/ticketStats", (req, res) => {
   });
 });
 
+app.get("/agentStats", (req, res) => {
+  GetAgentStats((data) => {
+    res.send(data);
+  });
+});
 app.get("/settings", (req, res) => {
   var settingsObj = JSON.parse(fs.readFileSync("./settings.json"));
 
