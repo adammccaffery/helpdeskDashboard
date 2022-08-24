@@ -49,6 +49,7 @@ const GetTicketStats = async (callback) => {
         name: data[i].agent,
         openedTickets: data[i].openTickets,
         resolvedTickets: data[i].resolvedToday,
+        resolvedThisMonth: data[i].resolvedThisMonth,
       });
     } else {
       cards.push({
@@ -61,6 +62,12 @@ const GetTicketStats = async (callback) => {
 var top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedTickets != 0))).sort((a,b) => b.resolvedTickets - a.resolvedTickets).slice(0,4)
     cards.push({
         name: "Resolved Today",
+        top5: top5,
+        category: "Agents",
+    });
+top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedThisMonth != 0))).sort((a,b) => b.resolvedThisMonth - a.resolvedThisMonth).slice(0,4)
+    cards.push({
+        name: "Monthly Resolved",
         top5: top5,
         category: "Agents",
     });

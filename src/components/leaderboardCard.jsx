@@ -32,6 +32,16 @@ function LeaderboardCard(props) {
                         </>
                     );
                 })}
+                {props.name === "Monthly Resolved" && props.top5.map(function (c,i) {
+                    return (
+                        <>
+                            <tr>
+                                <td>{c.name}</td>
+                                <td>{c.resolvedThisMonth}</td>
+                            </tr>
+                        </>
+                    );
+                })}
             </table>
       </div>
     </div>
