@@ -221,6 +221,22 @@ body {
   font-size: 3em;
 }
 
+.weather {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: right;
+  flex-direction: column;
+}
+
+.weather p {
+    color: #f3eac0;
+    font-weight: bold;
+  font-size: 3em;
+}
+
 .leaderboardValueContainer {
   color: #f3eac0;
   justify-content: center;

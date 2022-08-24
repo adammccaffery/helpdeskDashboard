@@ -7,6 +7,7 @@ import TitleHeader from "./components/titleHeader";
 import CardCategory from "./components/cardCategory";
 import Card from "./components/card";
 import DigitalClock from "./components/digitalClock";
+import Weather from "./components/weather";
 import Clock from "react-clock";
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
                             {GetTicketsForCategory("IT Ops")}
                             {GetTicketsForCategory("Agents")}
                         </div>
+                        <Weather />
                         <DigitalClock />
                     </div>
                 )}
