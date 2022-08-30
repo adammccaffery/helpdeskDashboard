@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import emoji from "react-easy-emoji";
 
 function Weather() {
   const [weatherState, setWeatherState] = useState();
@@ -15,7 +16,7 @@ function Weather() {
       */
     fetch('https://wttr.in/Edgecliff?format=3')
       .then((response) => response.text())
-      .then((response) => setWeatherState(response.replace("Edgecliff: ", "").replace("C", "").replace("+","")));
+      .then((response) => setWeatherState(emoji(response.replace("Edgecliff: ", "").replace("C", "").replace("+",""))));
 }, []);
 
   return (
