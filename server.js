@@ -32,8 +32,8 @@ app.get("/", (req, res) => {
 const GetTicketStats = async (callback) => {
     try {
         await pool.connect();
-        const result = await pool.request().query(`DECLARE @r VARCHAR(1000)
-        EXEC REPORTS.spExportStatsJSON  @r OUTPUT
+        const result = await pool.request().query(`DECLARE @r VARCHAR(2000)
+        EXEC REPORTS.spExportStatsJSON @r OUTPUT
         select @r`)
         var data = await JSON.parse(result.recordset[0][""]);
     } catch {
@@ -58,27 +58,61 @@ const GetTicketStats = async (callback) => {
         category: GetCategoryFromName(data[i].name),
       });
     }
-  }
-var top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedTickets != 0))).sort((a,b) => b.resolvedTickets - a.resolvedTickets).slice(0,4)
-    cards.push({
-        name: "Resolved Today",
-        top5: top5,
-        category: "Agents",
-    });
-top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedThisMonth != 0))).sort((a,b) => b.resolvedThisMonth - a.resolvedThisMonth).slice(0,4)
-    cards.push({
-        name: "Monthly Resolved",
-        top5: top5,
-        category: "Agents",
-    });
-top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.opendedTickets != 0))).sort((a,b) => b.opendedTickets - a.opendedTickets).slice(0,4)
-//Comment
-    cards.push({
-        name: "Open Tickets",
-        top5: top5,
-        category: "Agents",
-    });
 
+
+    Object.keys(data).forEach(key => {
+        switch (key) {
+            case "groupCards":
+                data[key].forEach(groupObj => 
+                    cards.push({
+                        name: StripCategoryFromName(groupObj.name),
+                        value: groupObj.value,
+                        category: GetCategoryFromName(groupObj.name),
+                      }))
+                break;
+            case "agents":
+                data[key].forEach(agentObj => 
+                      agents.push({
+                        name: agentObj.agent,
+                        openedTickets: agentObj.openTickets,
+                        resolvedTickets: agentObj.resolvedToday,
+                        resolvedThisMonth: agentObj.resolvedThisMonth,
+                      }))
+                top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedTickets != 0))).sort((a,b) => b.resolvedTickets - a.resolvedTickets).slice(0,4)
+                    cards.push({
+                        name: "Resolved Today",
+                        top5: top5,
+                        category: "Agents",
+                    });
+                top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.resolvedThisMonth != 0))).sort((a,b) => b.resolvedThisMonth - a.resolvedThisMonth).slice(0,4)
+                    cards.push({
+                        name: "Monthly Resolved",
+                        top5: top5,
+                        category: "Agents",
+                    });
+                top5 = Object.values(agents.filter(agent => (agent.name != "Unassigned" && agent.openedTickets != 0))).sort((a,b) => b.openedTickets - a.openedTickets).slice(0,4)
+                //Comment
+                    cards.push({
+                        name: "Open Tickets",
+                        top5: top5,
+                        category: "Agents",
+                    });
+                break;
+            case "functions":
+                    data[key].forEach(functionObj =>{
+                        var date = new Date(functionObj.dueDate);
+                        functions.push({
+                            subject: functionObj.subject,
+                            dueDate: date.toLocaleDateString("en-AU", dateOptions),
+                        })})
+                    cards.push({
+                        name: "Upcoming Events",
+                        top5: functions,
+                        category: "AV",
+                    });
+                break;
+        }
+    });
   callback(cards);
 };
 
@@ -86,7 +120,7 @@ const GetAgentStats = async (callback) => {
     try {
         await pool.connect();
         const result = await pool.request().query(`DECLARE @r VARCHAR(1000)
-        EXEC REPORTS.spExportStatsJSON  @r OUTPUT
+        EXEC REPORTS.spExportStatsJSON @r OUTPUT
         select @r`)
         var data = await JSON.parse(result.recordset[0][""]);
     } catch {
