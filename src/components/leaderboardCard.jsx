@@ -10,40 +10,54 @@ function LeaderboardCard(props) {
   return (
     <div key={props.name + props.value} className={"card leaderboard" + GetDynamicClass()}>
       <h2>{props.name}</h2>
-      <div className="leaderboardValueContainer">
-            <table>
                 {props.name === "Resolved Today" && props.top5.map(function (c,i) {
                     return (
-                        <>
-                            <tr>
-                                <td>{c.name}</td>
-                                <td>{c.resolvedTickets}</td>
-                            </tr>
-                        </>
+                        <div className="leaderboardValueContainer">
+                            <table>
+                                <tr>
+                                    <td className="leaderboardLeftAlign">{c.name}</td>
+                                    <td className="leaderboardRightAlign">{c.resolvedTickets}</td>
+                                </tr>
+                            </table>
+                        </div>
                     );
                 })}
                 {props.name === "Open Tickets" && props.top5.map(function (c,i) {
                     return (
-                        <>
-                            <tr>
-                                <td>{c.name}</td>
-                                <td>{c.openedTickets}</td>
-                            </tr>
-                        </>
+                            <div className="leaderboardValueContainer">
+                                <table>
+                                    <tr>
+                                        <td className="leaderboardLeftAlign">{c.name}</td>
+                                        <td className="leaderboardRightAlign">{c.openedTickets}</td>
+                                    </tr>
+                                </table>
+                            </div>
                     );
                 })}
                 {props.name === "Monthly Resolved" && props.top5.map(function (c,i) {
                     return (
-                        <>
-                            <tr>
-                                <td>{c.name}</td>
-                                <td>{c.resolvedThisMonth}</td>
-                            </tr>
-                        </>
+                        <div className="leaderboardValueContainer">
+                            <table>
+                                <tr>
+                                    <td className="leaderboardLeftAlign">{c.name}</td>
+                                    <td className="leaderboardRightAlign">{c.resolvedThisMonth}</td>
+                                </tr>
+                                </table>
+                            </div>
                     );
                 })}
-            </table>
-      </div>
+                {props.name === "Upcoming Events" && props.top5.map(function (c,i) {
+                    return (
+                      <div className="leaderboardFunctionValueContainer">
+                            <table>
+                                <tr>
+                                    <td className="leaderboardLeftAlign">{c.subject}</td>
+                                    <td className="leaderboardRightAlign">{c.dueDate}</td>
+                                </tr>
+                                </table>
+                            </div>
+                    );
+                })}
     </div>
   );
 }

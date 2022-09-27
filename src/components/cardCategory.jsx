@@ -4,8 +4,17 @@ import Card from "./card";
 import LeaderboardCard from "./leaderboardCard";
 
 function CardCategory(props) {
-    if (props.cards[0].category !== "Agents"){
-        var openedTickets = props.cards[2].value
+    /*
+    if (props.title == "IT Ops") {
+        props.cards.pop()
+        props.cards.pop()
+        props.cards.pop()
+    }
+    */
+    if (props.title !== "Agents"){
+        if (props.title !== "IT Ops"){
+            var openedTickets = props.cards[2].value
+        }
           return (
             <div
               className="cardCategoryContainer"
@@ -14,6 +23,17 @@ function CardCategory(props) {
               <div className="cardContainer">
                 {props.cards !== null &&
                   props.cards.map(function (c, i) {
+                      if (c.name == "Upcoming Events"){
+                            return (
+                              <LeaderboardCard
+                                key={i}
+                                name={c.name}
+                                top5={c.top5}
+                                category={c.category}
+                                customClasses={c.customClasses}
+                              />
+                            );
+                      } else {
                     return (
                       <Card
                         key={i}
@@ -24,12 +44,12 @@ function CardCategory(props) {
                         customClasses={c.customClasses}
                       />
                     );
-                  })}
+                  }})}
               </div>
             </div>
           );
     }
-    else{
+    else if (props.title === "Agents"){
       return (
         <div className="cardCategoryContainer" >
           <div className="cardContainer">

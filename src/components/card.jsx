@@ -17,6 +17,7 @@ function Card(props) {
             warningL = 40
             break
         case "IT Ops":
+        case "AV":
             warningL = 12
             break
         default:
@@ -27,6 +28,7 @@ function Card(props) {
         var tix = props.value
             switch (props.name){
                 case "Action Required":
+                case "IT Ops Action Required / Unassigned":
                     switch (true){
                         case (tix >= warningL):
                             classList = "warningImportant";

@@ -42,21 +42,14 @@ const GetTicketStats = async (callback) => {
 
     var cards = [];
     var agents = [];
-
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].agent != null) {
-      agents.push({
-        name: data[i].agent,
-        openedTickets: data[i].openTickets,
-        resolvedTickets: data[i].resolvedToday,
-        resolvedThisMonth: data[i].resolvedThisMonth,
-      });
-    } else {
-      cards.push({
-        name: StripCategoryFromName(data[i].name),
-        value: data[i].value,
-        category: GetCategoryFromName(data[i].name),
-      });
+    var functions = [];
+    var top5
+    var dateOptions = {
+        day: "numeric",
+        month: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
     }
 
 
@@ -128,31 +121,37 @@ const GetAgentStats = async (callback) => {
     }
 
     var agents = [];
-    for (var i = 0; i < data.length; i++) {
-        if (data[i].agent != null) {
-          agents.push({
-            name: data[i].agent,
-            openedTickets: data[i].openTickets,
-            resolvedTickets: data[i].resolvedToday,
-          });
+    Object.keys(data).forEach(key => {
+        switch (key) {
+            case "agents":
+                data[key].forEach(agentObj => 
+                      agents.push({
+                        name: agentObj.agent,
+                        openedTickets: agentObj.openTickets,
+                        resolvedTickets: agentObj.resolvedToday,
+                        resolvedThisMonth: agentObj.resolvedThisMonth,
+                      }))
         }
-    }
+    });
     callback(agents);
 }
 const StripCategoryFromName = (name) => {
-  const categories = ["Helpdesk", "Database", "IT Ops"];
+  const categories = ["Helpdesk", "Database", "IT Ops", "AV"];
 
-  for (var i = 0; i < categories.length; i++) {
-    if (name.includes(categories[i])) {
-      return name.replace(categories[i], "").trim();
+    if (!name.includes("IT Ops")) {
+      for (var i = 0; i < categories.length; i++) {
+        if (name.includes(categories[i])) {
+          return name.replace(categories[i], "").trim();
+        }
+      }
     }
-  }
 
   return name;
 };
 
+
 const GetCategoryFromName = (name) => {
-  const categories = ["Helpdesk", "Database", "IT Ops"];
+  const categories = ["Helpdesk", "Database", "IT Ops", "AV"];
 
   for (var i = 0; i < categories.length; i++) {
     if (name.includes(categories[i])) {

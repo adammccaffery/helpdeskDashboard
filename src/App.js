@@ -72,6 +72,7 @@ function App() {
             value: obj.value,
             category: obj.category,
               top5: obj.top5,
+
           },
         ])
       );
@@ -86,6 +87,7 @@ function App() {
     if (map.size === 0) {
       return <div>Error</div>;
     }
+    
 
     return <CardCategory title={category} cards={map.get(category)} />;
   };
@@ -98,8 +100,9 @@ function App() {
                         <div className="gridCell" style={{ gridColumn: "span 2" }}>
                             {GetTicketsForCategory("Helpdesk")}
                             {GetTicketsForCategory("Database")}
-                            {GetTicketsForCategory("IT Ops")}
+                            {GetTicketsForCategory("AV")}
                             {GetTicketsForCategory("Agents")}
+                            {/*GetTicketsForCategory("IT Ops")*/}
                         </div>
                         <Weather />
                         <DigitalClock />
