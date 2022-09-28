@@ -11,6 +11,12 @@ function CardCategory(props) {
         props.cards.pop()
     }
     */
+    if (props.title === "AV") {
+        props.cards[4] = props.cards[3]
+        props.cards[3] = props.cards[2]
+        props.cards[2] = props.cards[4]
+        props.cards.pop()
+    }
     if (props.title !== "Agents"){
         if (props.title !== "IT Ops"){
             var openedTickets = props.cards[2].value
