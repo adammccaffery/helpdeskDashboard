@@ -1,0 +1,7 @@
+log into asc-iis03
+go to C:/Websites/helpdeskDashboard/
+right click open git bash
+to pull the latest build type: git pull && npm run build
+open task manager and find NodeJSITDashboardService and restart
+dashboard should be restarted
+
