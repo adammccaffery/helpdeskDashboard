@@ -16,7 +16,13 @@ function Weather() {
       */
     fetch('https://wttr.in/Edgecliff?format=3')
       .then((response) => response.text())
-      .then((response) => setWeatherState(emoji(response.replace("Edgecliff: ", "").replace("C", "").replace("+",""))));
+      .then((response) => {
+        if (!response.includes("running out of queries")) {
+            setWeatherState(emoji(response.replace("Edgecliff: ", "").replace("C", "").replace("+","")))
+        } else {
+            setWeatherState("")
+        }
+      });
 }, []);
 
   return (
