@@ -17,7 +17,7 @@ function Weather() {
     fetch('https://wttr.in/Edgecliff?format=3')
       .then((response) => response.text())
       .then((response) => {
-        if (!response.includes("running out of queries")) {
+        if (!(response.includes("running out of queries") || response.includes("Unknown location;"))) {
             setWeatherState(emoji(response.replace("Edgecliff: ", "").replace("C", "").replace("+","")))
         } else {
             setWeatherState("")
