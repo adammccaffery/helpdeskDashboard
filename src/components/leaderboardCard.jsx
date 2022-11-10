@@ -22,6 +22,18 @@ function LeaderboardCard(props) {
                         </div>
                     );
                 })}
+                {props.name === "IT Ops" && props.top5.map(function (c,i) {
+                    return (
+                        <div className="leaderboardValueContainer">
+                            <table>
+                                <tr>
+                                    <td className="leaderboardLeftAlign">{c.name}</td>
+                                    <td className="leaderboardRightAlign">{c.value}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    );
+                })}
                 {props.name === "Open Tickets" && props.top5.map(function (c,i) {
                     return (
                             <div className="leaderboardValueContainer">

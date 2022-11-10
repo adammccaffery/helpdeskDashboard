@@ -62,6 +62,30 @@ const GetTicketStats = async (callback) => {
                         value: groupObj.value,
                         category: GetCategoryFromName(groupObj.name),
                       }))
+                var itOpsOpen = data[key].find(o => o.name === 'IT Ops Action Required').value
+                var itOpsUn = data[key].find(o => o.name === 'IT Ops Unassigned').value
+                var itOpsOpenToday = data[key].find(o => o.name === 'IT Ops Opened Today').value
+                var itOpsClosed = data[key].find(o => o.name === 'IT Ops Resolved Today').value
+
+                itOps4 = []
+                itOps4.push({
+                    name: "Action Required",
+                    value: itOpsOpen,
+                },{
+                    name: "Unassigned",
+                    value: itOpsUn,
+                },{ 
+                    name: "Opened Today",
+                    value: itOpsOpenToday,
+                },{
+                    name: "Resolved Today",
+                    value: itOpsClosed,
+                })
+                cards.push({
+                        name: "IT Ops",
+                        top5: itOps4,
+                        category: "Agents",
+                })
                 break;
             case "agents":
                 data[key].forEach(agentObj => 
