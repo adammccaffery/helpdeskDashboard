@@ -14,11 +14,11 @@ function Weather() {
     }, 1000);
   },
       */
-    fetch('https://wttr.in/Edgecliff?format=3')
+    fetch('https://wttr.in/Sydney?format=3')
       .then((response) => response.text())
       .then((response) => {
         if (!(response.includes("running out of queries") || response.includes("Unknown location;"))) {
-            setWeatherState(emoji(response.replace("Edgecliff: ", "").replace("C", "").replace("+","")))
+            setWeatherState(emoji(response.replace("Sydney: ", "").replace("C", "").replace("+","")))
         } else {
             setWeatherState("")
         }
