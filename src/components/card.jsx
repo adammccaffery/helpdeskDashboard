@@ -17,8 +17,10 @@ function Card(props) {
             warningL = 40
             break
         case "IT Ops":
-        case "AV":
             warningL = 12
+            break
+        case "AV":
+            warningL = 24
             break
         default:
             warningL = 40
